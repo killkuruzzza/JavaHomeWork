@@ -23,10 +23,10 @@ public class Main {
                 User user = inputReader.readUserData();
                 fileWriter.writeUserData(user);
             } catch (UserDataException | IOException e) {
-                System.out.println("Ошибка: " + e.getMessage());
+                System.out.println("РћС€РёР±РєР°: " + e.getMessage());
             }
 
-            System.out.println("Еще запишем? нажми \"n\" для выхода или \"enter\" для продолжения");
+            System.out.println("Р•С‰Рµ Р·Р°РїРёС€РµРј? РЅР°Р¶РјРё \"n\" РґР»СЏ РІС‹С…РѕРґР° РёР»Рё \"enter\" РґР»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ");
             scanner = new Scanner(System.in);
             if(scanner.nextLine().equalsIgnoreCase("n")) break;
         }

@@ -21,6 +21,6 @@ public class FileWriterImpl implements FileWriter {
                     user.getGender().toString());
             writer.write(userDataString + "\n");
         }
-        System.out.println("Данные успешно записаны в файл: " + fileName);
+        System.out.println("Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р»: " + fileName);
     }
 }

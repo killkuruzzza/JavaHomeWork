@@ -18,13 +18,13 @@ public class InputConsoleReaderImpl implements InputConsoleReader {
     @Override
     public User readUserData() throws UserDataException {
         while (true) {
-            System.out.println("Введите следующие данные, разделяя пробелом: Фамилия Имя Отчество Дата рождения (dd.mm.yyyy) Номер телефона Пол (f или m)");
+            System.out.println("Р’РІРµРґРёС‚Рµ СЃР»РµРґСѓСЋС‰РёРµ РґР°РЅРЅС‹Рµ, СЂР°Р·РґРµР»СЏСЏ РїСЂРѕР±РµР»РѕРј: Р¤Р°РјРёР»РёСЏ РРјСЏ РћС‚С‡РµСЃС‚РІРѕ Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ (dd.mm.yyyy) РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР° РџРѕР» (f РёР»Рё m)");
 
             try {
                 String input = scanner.nextLine();
                 String[] data = input.split(" ");
 
-                if (data.length != 6) throw new UserDataException("Введено неверное количество данных");
+                if (data.length != 6) throw new UserDataException("Р’РІРµРґРµРЅРѕ РЅРµРІРµСЂРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР°РЅРЅС‹С…");
 
                 LocalDate birthday = parseDateOfBirth(data[3]);
                 long tel = parsePhoneNumber(data[4]);
@@ -39,7 +39,7 @@ public class InputConsoleReaderImpl implements InputConsoleReader {
                         .gender(gender)
                         .build();
             } catch (ParseException | NumberFormatException e) {
-                System.out.println("Ошибка: " + e.getMessage());
+                System.out.println("РћС€РёР±РєР°: " + e.getMessage());
             }
         }
     }
@@ -48,7 +48,7 @@ public class InputConsoleReaderImpl implements InputConsoleReader {
         try {
             return LocalDate.parse(dateOfBirthString, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         } catch (Exception e) {
-            throw new ParseException("Неверный формат даты рождения");
+            throw new ParseException("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°С‚С‹ СЂРѕР¶РґРµРЅРёСЏ");
         }
     }
 
@@ -56,7 +56,7 @@ public class InputConsoleReaderImpl implements InputConsoleReader {
         try {
             return Long.parseLong(phoneNumberString);
         } catch (NumberFormatException e) {
-            throw new ParseException("Неверный формат номера телефона");
+            throw new ParseException("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РЅРѕРјРµСЂР° С‚РµР»РµС„РѕРЅР°");
         }
     }
 
@@ -66,7 +66,7 @@ public class InputConsoleReaderImpl implements InputConsoleReader {
         } else if (genderString.equalsIgnoreCase("f")) {
             return Gender.FEMALE;
         } else {
-            throw new ParseException("Неверный формат пола");
+            throw new ParseException("РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РїРѕР»Р°");
         }
     }
 }
