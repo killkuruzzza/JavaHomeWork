@@ -5,8 +5,7 @@ import java.nio.file.StandardCopyOption;
 
 public class Backup {
 
-    public static void createBackup(String rootDir, String copyDir) throws IOException {
-
+    public static void createBackupWithSubDir(String rootDir, String copyDir) throws IOException {
         File backupDir = new File("./backup");
         if (!backupDir.exists())
             backupDir.mkdir();
@@ -24,7 +23,23 @@ public class Backup {
                     if (!newDir.exists())
                         newDir.mkdir();
 
-                    createBackup(String.valueOf(file.toPath()), newDir.getPath());
+                    createBackupWithSubDir(String.valueOf(file.toPath()), newDir.getPath());
                 }
+    }
+
+    public static void createBackupWithOutSubDir(String rootDir) throws IOException {
+        File backupDir = new File("./backup");
+        if (!backupDir.exists())
+            backupDir.mkdir();
+
+        File sourceDir = new File(rootDir);
+        File[] filesToBackup = sourceDir.listFiles();
+
+        if (filesToBackup != null)
+            for (File file : filesToBackup)
+                if (file.isFile())
+                    Files.copy(file.toPath(), new File(backupDir.getPath() + "/" + file.getName()).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                else if (file.isDirectory())
+                    createBackupWithOutSubDir(String.valueOf(file.toPath()));
     }
 }
