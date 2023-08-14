@@ -2,7 +2,7 @@ package ModelElements;
 
 
 import java.util.ArrayList;
-
+// здесь почти все неверно
 public class Scene {
     int id;
     ArrayList<PoligonalModel> models = new ArrayList<>();
