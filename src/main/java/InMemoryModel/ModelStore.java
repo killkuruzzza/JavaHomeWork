@@ -8,7 +8,7 @@ import ModelElements.Scene;
 import java.util.ArrayList;
 
 public class ModelStore implements IModelChangeObserver, IModelChanger {
-
+    //не все переменные и нет конструктора
     ArrayList<PoligonalModel> Models = new ArrayList<>();
     ArrayList<Scene> Scenes = new ArrayList<>();
     ArrayList<Flash> Flashes = new ArrayList<>();
